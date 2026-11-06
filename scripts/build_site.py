@@ -97,7 +97,7 @@ for i,p in enumerate(POSTS):
     (OUT/'entradas'/(p['slug']+'.html')).write_text(document(p['title'],body,'../',excerpt(p),'entradas/'+p['slug']+'.html'))
 
 latest=POSTS[0]
-body='<main id="contenido"><section class="intro"><div class="kicker">El cuaderno de Ángel Martín Santo</div><h1>Pensar entre libros,<br>imágenes y preguntas.</h1><p>Filosofía, literatura y educación. Lecturas, reflexiones y otras formas de mirar el mundo.</p></section>'
+body='<main id="contenido"><section class="intro"><div class="kicker">El cuaderno de Ángel Martín Santo</div><h1>Filosofía, educación y afinidades electivas</h1><p>Sin propósito, utilidad ni público.</p></section>'
 body+=f'<section class="feature" aria-labelledby="ultima">{thumbnail(latest,"cover")}<div><div class="kicker">Última entrada · {esc(latest["category"])}</div><h2 id="ultima"><a href="entradas/{latest["slug"]}.html">{esc(latest["title"])}</a></h2><p class="meta">{esc(latest["date"])}</p><p class="excerpt">{esc(excerpt(latest,240))}</p><a class="read" href="entradas/{latest["slug"]}.html">Leer la entrada →</a></div></section>'
 body+=f'<section id="archivo" aria-labelledby="titulo-archivo"><div class="archive-head"><h2 id="titulo-archivo">Archivo de entradas</h2><p class="meta">{len(POSTS)} textos · {min(datekey(p)[:4] for p in POSTS)}–{max(datekey(p)[:4] for p in POSTS)}</p></div><div class="filters" id="filters" hidden><label><span>Buscar en títulos y textos</span><input id="search" type="search" placeholder="Un autor, una idea, una lectura…" autocomplete="off"></label><label><span>Filtrar por tema</span><select id="category"><option value="">Todos los temas</option>'
 for c in sorted({p['category'] for p in POSTS}):body+=f'<option>{esc(c)}</option>'
